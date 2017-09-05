@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>红旅动漫</title>
+    <link rel="stylesheet" type="" href="lib/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="sass/base.css">
+    <link rel="stylesheet" href="sass/index.css">
+
+</head>
+
+<body>
+    <div id="layout">
+        <!-- 状态栏 -->
+        <header id="header">
+            <div class="col-xs-5">
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="true">     
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li class="lian"><a href="#">连载动漫-get</a><span> > </span></li>
+                        <li class="list"><a href="#">专题列表-get</a><span> > </span></li>
+                        <li><a href="#">关于</a><span> > </span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xs-5 ">红旅动漫</div>
+            <div class="col-xs-2 text-center"><i class="icon-search"></i></div>
+        </header>
+        <!-- 连载动画 -->
+        <div id="menu">
+            <div class="lian-get">
+                <ul>
+                    <script type="text/html" id="lianzai">
+                        {{each}}
+                        <li class="clearfix">
+                            <a href="{{$value.url}}"><img src="{{$value.img}}" alt=""></a>
+                            <div class="right">
+                                <p><a href="">{{$value.name}}</a></p>
+                                <p><a href="">{{$value.episode}}</a></p>
+                                <p><a href="">{{$value.updateTime}}</a></p>
+                                <p><a href="">下载次数:{{$value.downloadCount}}</a></p>
+                            </div>
+                        </li>
+                        {{/each}}
+                    </script>
+                </ul>
+            </div>
+
+            <script type="text/html" id="gettopics">
+                {{each}}
+                <li class="clearfix">
+                    <a href="{{$value.url}}">
+                        <img src="{{$value.img}}" alt="">
+                        <p>{{$value.title}}</p>
+                    </a>
+                </li>
+                {{/each}}
+            </script>
+
+        </div>
+        <!-- 轮播图 -->
+        <section id="slide">
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                </ol>
+                <!-- 轮播图的所有轮播项-->
+                <div class="carousel-inner" role="listbox">
+                    <script type="text/html" id="slidePic">
+                        {{each}}
+                        <div class="item">
+                            <a href="{{$value.url}}" class="mobileImg">
+                                <img src="{{$value.img}}" alt="">
+                                <span class="box">{{$value.title}}</span>
+                            </a>
+                        </div>
+                        {{/each}}
+                    </script>
+                </div>
+            </div>
+        </section>
+        <!-- tab栏标签页 -->
+        <section id="tab">
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="col-xs-3 text-center active"><a href="#home" type="1" aria-controls="home" role="tab" data-toggle="tab">新增连载</a></li>
+                <li role="presentation" class="col-xs-3 text-center"><a href="#profile" type="2" aria-controls="profile" role="tab" data-toggle="tab">新增完结</a></li>
+                <li role="presentation" class="col-xs-3 text-center"><a href="#messages" type="3" aria-controls="messages" role="tab" data-toggle="tab">推荐连载</a></li>
+                <li role="presentation" class="col-xs-3 text-center"><a href="#settings" type="4" aria-controls="settings" role="tab" data-toggle="tab">推荐完结</a></li>
+            </ul>
+            <!-- 标签页的内容-->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active home" id="home"></div>
+                <div role="tabpanel" class="tab-pane profile" id="profile"></div>
+                <div role="tabpanel" class="tab-pane" id="messages"></div>
+                <div role="tabpanel" class="tab-pane" id="settings"></div>
+            </div>
+        </section>
+    </div>
+    <script src="lib/jquery/jquery.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.js"></script>
+    <script src="lib/template-web.js"></script>
+    <script src="js/index.js"></script>
+    <!-- tab栏标签页模板 -->
+    <script type="text/html" id="tempProducts">
+        <ul>
+            {{each}}
+            <li data-type="{{$value.type}}" class="col-xs-6 text-center">
+                <a href="{{$value.url}}">
+                   <img src="{{$value.img}}" alt="">
+                   <span>{{$value.update}}</span> 
+                </a>
+                <p>{{$value.name}}</p>
+            </li>
+            {{/each}}
+        </ul>
+    </script>
+</body>
+
+</html>
